@@ -1,0 +1,242 @@
+:root{
+    --primary-color: rgb(26, 26, 26);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+p {
+    font-size: large;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    top: 0;
+  }
+
+/* GLOBAL STYLE */
+label {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: larger;
+}
+
+input {
+    width: 100%;
+    padding: .75rem;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    width: 70%;
+    font-size: larger;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* CHECKMARK */
+.radio-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.modal {
+    text-align: center;
+    max-width: 600px;
+}
+
+.modal::backdrop {
+    background: rgb(0, 0, 0 , .36);
+}
+
+.radio-container label {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    cursor: pointer;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 1rem;
+    align-items: center;
+}
+
+.radio-container label::before {
+    content: "";
+    border: 2px solid #222;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.radio-container label::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(26, 26, 26, 0);
+    left: 0; 
+    right: 0;
+    bottom: 5px;
+    margin-left: auto; 
+    margin-right: auto; 
+    border-radius: 50%;
+    transition: all .4s;
+}
+
+input[type="radio"]:checked + label::after {
+    background-color: rgb(26, 26, 26);
+}
+
+/* PROGRESS BAR */
+.progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+}
+
+.progressbar::before, .progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 6px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: 0;
+}
+
+.progress {
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: .3s;
+}
+
+.progress-step {
+    width: 2rem;
+    height: 2rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    z-index: 1;
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+}
+
+.progress-step-active {
+    background-color: var(--primary-color);
+    color: #f3f3f3;
+}
+
+/* FORM */
+.form {
+    width: clamp(320px, 30%, 600px);
+    margin: 0 auto;
+    border-radius: .36rem;
+    padding: 1.5rem;
+    background-color: rgba(200, 200, 200, 0.6);
+    box-shadow: inset .6rem 1rem 3rem rgb(255, 255, 255);
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step-active {
+    display: block;
+    text-align: center;
+}
+
+.input-group {
+    margin: 2rem 0;
+}
+
+.popup-error {
+    background-color: rgb(37, 37, 37, .7);
+    padding: 1rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    border-radius: 50px;
+    color: #f3f3f3;
+    display: flex;
+    position: absolute;
+    top: 16%;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+}
+
+.popup-error.open{
+    animation: popupFade 1.2s cubic-bezier(0.56, 0.04, 0.51, 1.18);
+}
+
+@keyframes popupFade {
+    0% {
+        opacity: 0;
+        top: 26%
+    }
+    
+    50% {
+        opacity: 1;
+        top: 16%
+    }
+
+    76% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* BUTTON */
+.btn{
+    display: inline-block;
+    padding: .75rem;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: #f3f3f3;
+    border-radius: .25rem;
+    cursor: pointer;
+    transition: .3s;
+    width: 36%;
+    font-size: larger;
+}
+
+.btn:hover {
+    background-color: rgb(64, 64, 64);
+}

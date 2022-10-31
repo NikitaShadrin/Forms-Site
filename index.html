@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <script src="background.js" defer></script>
+    <title>A little quiz</title>
+</head>
+<body>
+    <div class="popup-error" id="err-msg">
+        <p>One or more inputs are incorrect!</p>
+    </div>
+    <form action="#" class="form">
+        <h1 class="text-center">Very Human Quiz</h1>
+        <!-- PROGRESS BAR-->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+            <div class="progress-step progress-step-active"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+        </div>
+
+<!-- ENTRY PAGE -->
+        <div class="form-step form-step-active">
+            <p>Welcome! You're about to do a small quiz.</p>
+            <p>I made it just to practice some web dev stuff: 
+                multi-step form with progress bar, form validation, cool moving background, etc.</p>
+            <p>Hope you enjoy!</p>
+            <div class="btns-group">
+                <a href="#" class="btn btn-next" onclick="nextPage()">Begin</a>
+            </div>
+        </div>
+<!-- PAGE 2 -->
+        <div class="form-step">
+            <div class="input-group">
+                <label for="curr_date">First things first: input the current date</label>
+                <input type="date" name="curr_date" id="curr_date" required/>
+            </div>
+            <div class="input-group">
+                <label for="curr_time">As well as the current time!</label>
+                <input type="time" name="curr_time" id="curr_time" required/>
+            </div>
+            <div class="btns-group">
+                <a href="#" class="btn btn-next" onclick="pageOne()">Submit</a>
+            </div>
+        </div>
+<!-- PAGE 3 -->
+        <div class="form-step"> 
+            <div class="input-group">
+                <label>What is the most commonly scientifically accepted number of continents?</label>
+                <div class="radio-container">
+                    <input type="radio" id="5" name="continent">
+                    <label for="5">5</label>
+                    <input type="radio" id="6" name="continent">
+                    <label for="6">6</label>
+                    <input type="radio" id="7" name="continent">
+                    <label for="7">7</label>
+                    <input type="radio" id="8" name="continent">
+                    <label for="8">8</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>What is the closest synonym to arcane?</label>
+                <div class="radio-container">
+                    <input type="radio" id="unclear" name="synonym">
+                    <label for="unclear">Unclear</label>
+                    <input type="radio" id="esoteric" name="synonym">
+                    <label for="esoteric">Esoteric</label>
+                    <input type="radio" id="intricate" name="synonym">
+                    <label for="intricate">Intricate</label>
+                    <input type="radio" id="deep" name="synonym">
+                    <label for="deep">Deep</label>
+                </div>
+            </div>
+            <div class="btns-group">
+                <a href="#" class="btn btn-next" onclick="pageTwo()">Submit</a>
+            </div>
+        </div>
+<!-- PAGE 4 -->
+        <div class="form-step"> 
+            <div class="input-group">
+                <label for="degrees">How many degrees do all the angles of a triangle add up to?</label>
+                <input type="number" name="degrees" id="degrees" required/>
+            </div>
+            <div class="input-group">
+                <label for="math_result">What's the answer to 5*(2^4 - 3^2) - 1?</label>
+                <input type="number" name="math_result" id="math_result" required/>
+            </div>
+            <div class="btns-group">
+                <a href="#" class="btn btn-next" onclick="pageThree()">Submit</a>
+            </div>
+        </div>
+<!-- PAGE 5 -->
+        <div class="form-step"> 
+            <div class="input-group">
+                <label for="currency_type">What currency does Japan use?</label>
+                <input type="text" name="currency_type" id="currency_type" required/>
+            </div>
+            <div class="input-group">
+                <label for="trivia">What's the name of the most sold video game as of 2022?</label>
+                <input type="text" name="trivia" id="trivia" required/>
+            </div>
+            <div class="btns-group">
+                <a href="#" class="btn btn-next" onclick="pageFour()">Submit</a>
+            </div>
+        </div>
+<!-- LAST PAGE -->
+        <div class="form-step"> 
+            <div class="input-group">
+                <label for="strong_pass">As a final test try to come up with a super duper strong Password</label>
+                <input type="text" name="strong_pass" id="strong_pass" required/>
+                <p id="pass-hint"></p>
+            </div>
+            <div class="btns-group">
+                <a href="#" class="btn btn-next" onclick="lastPage()">Submit</a>
+            </div>
+        </div>
+    </form>
+    <dialog class="modal" id="modal">
+        <h2>Congrats!</h2>
+        <p>You finished the quiz successfully! Not sure why you did it, this was just some coding practice but I hope you had fun</p>
+        <p>¯\_(ツ)_/¯</p>
+    </dialog>
+    <canvas id="canv" width="32" height="32"></canvas>
+</body>
+</html>
